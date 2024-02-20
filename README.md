@@ -1,1 +1,1 @@
-#Bootstrap Starter with directory structure
+Bootstrap Starter with a directory structure
