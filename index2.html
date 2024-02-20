@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Animation</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/sass/style.css" />
+    <style>
+      .row {
+        display: flex;
+      }
+
+      .col-animation {
+        display: block;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .col-hidden {
+        display: none;
+        pointer-events: none;
+        transition: opacity 1s ease-in-out;
+      }
+
+      @keyframes fadeInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-10%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        0% {
+          opacity: 0;
+          transform: translateX(10%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .col-animation.left-animation {
+        animation: fadeInLeft 2s ease-in-out;
+      }
+
+      .col-animation.right-animation {
+        animation: fadeInRight 2s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row bg-primary">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-animation left-animation">
+          <h1>ZABS</h1>
+          <h2>Empowering Businesses</h2>
+          <h2>With Smarter Software Solutions</h2>
+          <p>
+            We craft stunning mobile apps, build seamless web experiences, and
+            bring your brand to life with captivating designs. With ZEBS, you
+            don't just dream digital, you achieve it.
+          </p>
+          <button class="btn btn-primary">Services</button>
+        </div>
+        <div
+          class="col-sm-12 col-md-6 col-lg-6 col-animation col-hidden right-animation"
+        >
+          <h1>ZABS</h1>
+          <h2>More than just a Software</h2>
+          <h2>company, We’re your digital dream</h2>
+          <h2>weavers.</h2>
+          <p>
+            We craft stunning mobile apps, build seamless web experiences, and
+            bring your brand to life with captivating designs. With ZEBS, you
+            don't just dream digital, you achieve it.
+          </p>
+          <button class="btn btn-primary">Contact</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var counter = 0;
+
+      function toggleSections() {
+        var sections = document.querySelectorAll('.col-animation');
+        sections.forEach(function (section) {
+          section.classList.add('col-hidden');
+        });
+
+        sections[counter].classList.remove('col-hidden');
+        sections[counter].classList.toggle('left-animation');
+        sections[counter].classList.toggle('right-animation');
+
+        counter = (counter + 1) % sections.length;
+      }
+
+      setInterval(toggleSections, 2000);
+    </script>
+  </body>
+</html>
